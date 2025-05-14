@@ -35,6 +35,8 @@ extension DataChannel {
 
 		let writeHandler: DataChannel.WriteHandler = { data in
 			FileHandle.standardOutput.write(data)
+			FileHandle.standardOutput.write(Data([0x0A]))
+
 			if flushWrites {
 				fflush(stdout)
 			}
